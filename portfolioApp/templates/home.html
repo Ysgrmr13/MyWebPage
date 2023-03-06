@@ -1,0 +1,25 @@
+{% extends 'base.html ' %}
+{% block content %}
+<h1>This is home page</h1>
+
+{% load static %}
+
+<a href="{% static 'Diplom.pdf' %}">Resume</a>
+
+<br><a href="{% url 'blog:all_blogs' %}">Blog</a><br>
+
+<img src="{% static 'FullSizeRender_1583699387.jpg' %}" width="500" height="600">
+
+{% for project in projects %}
+
+    <h2>{{ project.title }}</h2>
+    <p>{{ project.descript }}</p>
+    <img src="{{ project.image.url }}" height="200" width="200">
+    {% if project.url %}
+        <br><a href="{{ project.url }}">Link</a>
+    {% endif %}
+
+{% endfor %}
+
+{% endblock %}
+

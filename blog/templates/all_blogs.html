@@ -1,0 +1,15 @@
+{% extends 'base.html ' %}
+{% block content %}
+
+<h1>This is blog page</h1>
+
+<h2>Aaron written {{ blogs.count }} blog{{ blogs.count|pluralize }}</h2>
+{% for blog in blogs %}
+
+    <a href="{% url 'blog:detail' blog.id %}"><h2>{{ blog.title }}</h2></a>
+    <h5>{{ blog.data|date:'M t Y' }}</h5>
+    <p>{{ blog.descript|striptags|truncatechars:50 }}</p>
+
+{% endfor %}
+
+{% endblock %}
